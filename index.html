@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scribe - AI Audio Transcription</title>
+    <!-- Google Fonts for premium typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app">
+      <header class="app-header">
+        <div class="logo-container">
+          <svg class="logo-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2v20M17 5v14M7 5v14M22 8v8M2 8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <h1>Scribe<span class="dot">.</span></h1>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <section class="hero">
+          <h2>Transform Speech to Text Instantly</h2>
+          <p>Powered by the Gemini AI. Drag and drop your audio to get started.</p>
+        </section>
+
+        <section class="upload-section">
+          <div id="drop-zone" class="drop-zone">
+            <input type="file" id="file-input" accept="audio/*" hidden />
+            <div class="drop-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            </div>
+            <p class="drop-text">Drag & drop your audio file here</p>
+            <p class="drop-subtext">or <span class="browse-link">browse files</span></p>
+            <p class="file-limits">Supports MP3, WAV, M4A up to 20MB</p>
+          </div>
+        </section>
+
+        <!-- Loading overlay -->
+        <section id="processing-state" class="hidden">
+           <div class="loader"></div>
+           <p>Transcribing your audio. This usually takes a few seconds...</p>
+        </section>
+
+        <!-- Error display -->
+        <section id="error-state" class="hidden">
+            <div class="error-box">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <p id="error-message">An error occurred.</p>
+                <button id="retry-btn" class="btn outline small">Try Again</button>
+            </div>
+        </section>
+
+        <section id="result-section" class="hidden result-section">
+          <div class="result-header">
+            <h3>Transcription Result</h3>
+            <button id="copy-btn" class="btn outline" title="Copy to clipboard">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              Copy
+            </button>
+          </div>
+          <div class="result-content" id="result-content">
+            <!-- Transcript injected here -->
+          </div>
+          <div class="action-footer">
+             <button id="reset-btn" class="btn primary">Transcribe Another File</button>
+          </div>
+        </section>
+      </main>
+
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

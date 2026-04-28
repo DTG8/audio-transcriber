@@ -1,0 +1,17 @@
+{
+  "name": "audio-transcriber",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:backend": "cd server && node index.js",
+    "dev:all": "concurrently \"npm run dev\" \"npm run dev:backend\"",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "vite": "^8.0.10"
+  }
+}
